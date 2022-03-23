@@ -9,5 +9,23 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
+const dbRef = firebase.database().ref();
+
+const usersRef = dbRef.child('Contact');
+const sendMessage = document.querySelector('#send');
+sendMessage.addEventListener('click', saveMessage);
+
+function saveMessage(event){
+    event.preventDefault();
+    let newMessage = {};
+    const inputsForm = document.querySelectorAll('.inputUI');
+    for(let i=0; i<inputsForm.length; i++){
+        let key = inputsForm[i].getAttribute('data-key');
+        let value = inputsForm[i].value;
+        newMessage[key] = value;
+    }
+    usersRef.push(newMessage);
+    console.log("votre message a été enregistré !!");
+};

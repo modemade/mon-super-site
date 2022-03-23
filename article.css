@@ -1,0 +1,15 @@
+section{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 1200px;
+    margin: 0 auto;
+    column-gap: 50px;
+}
+
+h1, article{
+    text-align: center;
+}
+
+i{
+    display: block;
+}
